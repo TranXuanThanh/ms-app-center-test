@@ -1,2 +1,5 @@
-/XCUITest/Buttons/DerivedData
+/XCUITest/Buttons/DerivedData/
+/XCUITest/Buttons/build/
 /XCUITest/Buttons/my-apc-submit.sh
+
+xcuserdata/
