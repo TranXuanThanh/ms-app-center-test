@@ -11,22 +11,17 @@ class ButtonsUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()
-        
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         XCUIApplication().launch()
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
+    // For information on grouping tests into substeps with activities
+    // See: https://developer.apple.com/documentation/xctest/activities_and_attachments/grouping_tests_into_substeps_with_activities
+    // In App Center Test each activity will display as a separate test step with screenshot
     func testPass() {
         
         let app = XCUIApplication()
@@ -38,8 +33,12 @@ class ButtonsUITests: XCTestCase {
         // amountLabel from Accessibility Identifier in storyboard
         let amountLabel = app.staticTexts["AmountLabelID"]
 
-        XCTAssertEqual(lessButton.exists, true)
-        XCTAssertEqual(moreButton.exists, true)
+        XCTContext.runActivity(named: "Loaded") { activity in
+            XCTAssertEqual(lessButton.exists, true)
+            XCTAssertEqual(moreButton.exists, true)
+            XCTAssertEqual(resetButton.exists, true)
+            XCTAssertEqual(amountLabel.exists, true)
+        }
         
         XCTContext.runActivity(named: "Reset") { activity in
             resetButton.tap()
@@ -67,6 +66,7 @@ class ButtonsUITests: XCTestCase {
         }
     }
     
+    // In App Center Test this test will display with no substeps and only one final screenshot
     func testNoActivities() {
 
         let app = XCUIApplication()
@@ -77,6 +77,7 @@ class ButtonsUITests: XCTestCase {
         let amountLabel = app.staticTexts["AmountLabelID"]
         
         XCTAssertEqual(moreButton.exists, true)
+        XCTAssertEqual(amountLabel.exists, true)
 
         moreButton.tap()
         XCTAssertEqual(amountLabel.value as! String, "1")
@@ -85,18 +86,4 @@ class ButtonsUITests: XCTestCase {
         XCTAssertEqual(amountLabel.value as! String, "2")
     }
     
-//    func testFail() {
-//        
-//        let app = XCUIApplication()
-//        
-//        let resetButton = app.buttons["Reset"]
-//        
-//        let amountLabel = app.staticTexts["AmountLabelID"]
-//        
-//        XCTContext.runActivity(named: "Test for 1 After Reset") { activity in
-//            resetButton.tap()
-//            XCTAssertEqual(amountLabel.value as! String, "1")
-//        }
-//    }
-
 }
