@@ -26,3 +26,7 @@ See [Starting A Test Run](https://docs.microsoft.com/en-us/appcenter/test-cloud/
 ## Test Details
 
 If you submit the tests to App Center Test and view the Test Report you will be able to see one test step and one screenshot for the test `testNoActivities` and there are five screenshots and test steps for the test `testPass`. This is a result of how the tests are written. You can compare the source code for these two tests in `ButtonsUITests.swift`. In `testPass` the various test steps are wrapped in `XCTContext.runActivity` and in `testNoActivities` they are not. To generate screenshots and test steps wrap your test steps or sub tests in `XCTContext.runActivity`. For more information, see [Grouping Tests into Substeps with Activities](https://developer.apple.com/documentation/xctest/activities_and_attachments/grouping_tests_into_substeps_with_activities).
+
+## Simulator Bug
+
+Note that if you are running locally on a simulator there is an issue that results in a crash of XCUITest when tapping a button with certain iOS Simulator versions. This does not seem to impact running on physical devices so does not impact App Center Test. For details on which simulator versions to avoid, see: [39348762: XCUITest crashes in -[XCElementSnapshot(Hitpoint) hitPoint:] with EXC_BAD_ACCESS ](https://github.com/lionheart/openradar-mirror/issues/19677).
