@@ -29,4 +29,4 @@ If you submit the tests to App Center Test and view the Test Report you will be 
 
 ## Simulator Bug
 
-Note that if you are running locally on a simulator there is an issue that results in a crash of XCUITest when tapping a button with certain iOS Simulator versions. This does not seem to impact running on physical devices so does not impact App Center Test. For details on which simulator versions to avoid, see: [39348762: XCUITest crashes in -[XCElementSnapshot(Hitpoint) hitPoint:] with EXC_BAD_ACCESS ](https://github.com/lionheart/openradar-mirror/issues/19677).
+If you are running locally on a simulator there is an issue that prevents XCUITest from starting or results in a crash of XCUITest when tapping a button with certain iOS Simulator versions. Because of this bug, avoid iOS Simulator versions 9.0, 11.0.1, 11.1, and 11.2; see: [39348762: XCUITest crashes in -[XCElementSnapshot(Hitpoint) hitPoint:] with EXC_BAD_ACCESS ](https://github.com/lionheart/openradar-mirror/issues/19677). This is a simulator only issue. It does not impact running on physical devices and does not cause any problems with App Center Test.  
