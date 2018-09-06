@@ -34,7 +34,7 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJJ-EX-qi9">
                                 <rect key="frame" x="36" y="149" width="302" height="21"/>
-                                <accessibility key="accessibilityConfiguration" identifier="AmountLabelID"/>
+                                <accessibility key="accessibilityConfiguration" identifier="amount_label_id"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
