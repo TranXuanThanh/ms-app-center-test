@@ -5,7 +5,6 @@ This sample iOS App and XCUITest includes an Xcode project for an app and XCUITe
 Primary documentation for App Center Test is available at [App Center Test documentation](https://docs.microsoft.com/en-us/appcenter/test-cloud/).
 
 Primary documentation for XCUITest in App Center Test is available at [Preparing XCUITest Tests for Upload](https://docs.microsoft.com/en-us/appcenter/test-cloud/preparing-for-upload/xcuitest).
-(Note: this documentation may still reference the AppCenter XCUITest Extensions. They are *newly* no longer required and this sample illustrates how to create and submit tests without those extensions.)
 
 Clone or download this repository so you can work with it locally.
 
