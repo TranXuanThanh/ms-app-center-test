@@ -15,7 +15,7 @@ Before you can run the app or XCUITest locally on a physical device or in App Ce
 
 1. Open this project in Xcode.  
 2. Navigate to the `Buttons` Target with Project navigator icon>`Buttons`>Hide/show project targets>`Buttons` Target.  
-3. Select a signing team.  
+3. Select a Team for signing.
 4. Do the same for the `ButtonsUITests` target.  
 
 ![Project Targets](images/ButtonsTarget.png)
