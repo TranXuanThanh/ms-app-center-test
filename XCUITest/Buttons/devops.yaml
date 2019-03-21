@@ -1,6 +1,3 @@
-resources:
-- repo: self
-
 pool:
   name: Default
   demands: xcode
@@ -40,3 +37,12 @@ steps:
     skipWaitingForResults: true
     showDebugOutput: true
 
+- task: Bash@3
+  displayName: 'Bash Script'
+  inputs:
+    targetType: filePath
+    filePath: './XCUITest/Buttons/devops-apc-submit.sh'
+    workingDirectory: XCUITest/Buttons
+    noProfile: false
+    noRc: false
+  enabled: false
