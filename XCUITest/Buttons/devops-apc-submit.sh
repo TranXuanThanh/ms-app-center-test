@@ -15,6 +15,10 @@ echo "devices_slug="${devices_slug}
 echo "test_series="${test_series}
 echo "locale="${locale}
 
+pwd
+
+ls -al
+
 rm -rf DerivedData
 
 xcrun xcodebuild build-for-testing \
