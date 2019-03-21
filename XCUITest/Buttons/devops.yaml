@@ -1,0 +1,42 @@
+resources:
+- repo: self
+
+pool:
+  name: Default
+  demands: xcode
+
+#Your build pipeline references an undefined variable named ‘Parameters.xcWorkspacePath’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+#Your build pipeline references an undefined variable named ‘Parameters.scheme’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+
+steps:
+- task: Xcode@5
+  displayName: 'Xcode build-for-testing'
+  inputs:
+    actions: 'build-for-testing'
+    xcWorkspacePath: '$(Parameters.xcWorkspacePath)'
+    scheme: '$(Parameters.scheme)'
+    signingOption: default
+    args: ' -derivedDataPath DerivedData'
+    useXcpretty: false
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(build.artifactstagingdirectory)/Debug-iphoneos/'
+  inputs:
+    SourceFolder: '$(system.defaultworkingdirectory)/DerivedData/Build/Products/Debug-iphoneos/'
+    Contents: '**/*'
+    TargetFolder: '$(build.artifactstagingdirectory)/Debug-iphoneos/'
+
+- task: AppCenterTest@1
+  displayName: 'Test with Visual Studio App Center'
+  inputs:
+    appFile: '**/XCUITest/Buttons/ipa/Buttons.ipa'
+    artifactsDirectory: '$(build.artifactstagingdirectory)/AppCenterTest'
+    frameworkOption: xcuitest
+    xcUITestBuildDirectory: '$(build.artifactstagingdirectory)/Debug-iphoneos/'
+    serverEndpoint: AppCenter2
+    appSlug: 'v-glenw/Buttons'
+    devices: 'v-glenw/nine2twelve'
+    series: azuredevops
+    skipWaitingForResults: true
+    showDebugOutput: true
+
